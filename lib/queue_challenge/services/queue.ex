@@ -38,7 +38,7 @@ defmodule QueueChallenge.QueueService do
 
   @impl true
   def handle_info(:process_message, %{messages: messages} = state) when length(messages) > 0 do
-    {message, updated_messages} = List.pop_at(messages, length(messages) - 1)
+    {message, updated_messages} = List.pop_at(messages, 0)
     Logger.info(message)
     {:noreply, %{state | messages: updated_messages}}
   end
